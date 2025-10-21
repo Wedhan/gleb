@@ -1,0 +1,22 @@
+name: simple-ci
+
+on:
+  push:
+    branches: [ main, devops-sprint ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Show environment
+        run: |
+          uname -a
+          bash --version
+      - name: Run script
+        run: |
+          chmod +x scripts/hello.sh
+          ./scripts/hello.sh
